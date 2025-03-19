@@ -18,6 +18,10 @@ async def check_db() -> None:
             space_events_id,
             "Я проснулся! %s" % datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
+@dp.channel_post()
+async def channel_post_handler(channel_post: Message) -> None:
+    await channel_post.answer('Я понял: ' + channel_post.text)
+
 # Command handler
 @dp.message(Command("start"))
 async def command_start_handler(message: Message) -> None:
